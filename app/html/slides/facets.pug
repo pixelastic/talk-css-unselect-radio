@@ -1,0 +1,140 @@
+// Animated GIF of faceting
+section.slide--vertical
+  .h-100.flcnw.pa3
+    .fln.f1.lh-title.tl.b Faceting
+    .fla.flcnw.flc.pa2.h-100
+      .fake-browser.shadow-3.center.f0.h-100
+        input.fln.pa1.br2.f2.w-50.mv2(type="text", value="alex")
+        img(src='./img/facetting.gif')
+
+// Global status
+section.slide--vertical
+  .h-100.flcnw.pa3
+    .fln.f1.lh-title.tl.b Global state with radios
+    .fla.flcnw
+      .fla.flrnw
+        .fln.w-50.flc
+          .fln
+            pre.bg-near-black.pa3.lh-copy.tl.f4
+              code.language-html
+                |&lt;input type="radio" name="f" id="radio_1" /&gt;
+                |&lt;input type="radio" name="f" id="radio_2" /&gt;
+            pre.bg-near-black.pa3.lh-copy.tl.f4
+              code.language-scss
+                |#radio_1, #radio_2 {
+                |  display: none;
+                |}
+
+            pre.bg-near-black.pa3.lh-copy.tl.f4.mt3
+              code.language-html
+                |&lt;label id="label_1" for="radio_1"&gt;
+                |  Engineering
+                |&lt;/label&gt;
+                |&lt;label id="label_2" for="radio_2"&gt;
+                |  Marketing
+                |&lt;/label&gt;
+        .fln.w-50.flc
+          .fln
+            pre.bg-near-black.pa3.lh-copy.tl
+              code.language-scss
+                |// Highlight selected label
+                |#radio_1:checked ~ #label_1,
+                |#radio_2:checked ~ #label_2 {
+                |  background: green; 
+                |}
+                |
+                |// Hide non-matching results
+                |#radio_1:checked ~ #result_5,
+                |#radio_1:checked ~ #result_42 {
+                |  display: none !important;
+                |}
+      .fln.flrnw.pa4
+        .fla.flrnw.flspah
+          .db.ba.pa2.o-50.flrnw.flrcv
+            .h1.w1.br-100.ba.bw1.bg-white
+            .di.pl2 #radio_1
+          .db.ba.pa2.o-80.flrnw.flrcv.b--blue.bw2
+            .h1.w1.br-100.ba.bw1.bg-black
+            .di.pl2 #radio_2
+          .db.ba.pa2.flc Engineering
+          .db.ba.pa2.flc.bg-green Marketing
+
+
+// Unselecting a radio
+section.slide--vertical
+  .h-100.flcnw.pa3
+    .fln.f1.lh-title.tl.b Phantom element
+    .fla.flrnw
+      .fla.flcnw.pa3.flccv
+        pre.bg-near-black.pa3.lh-copy.tl.f4.mb3
+          code.language-html
+            |++ &lt;input type="radio" name="f" id="radio_X" /&gt;
+            |
+            |++ &lt;label id="label_X" for="radio_X"&gt;&lt;/label&gt;
+        pre.bg-near-black.pa2.lh-copy.tl.f4
+          code.language-scss
+            |#label_X { display: none; }
+            |// Hiding selected label
+            |#radio_2:checked ~ #label_2 {
+            |  display: none;
+            |}
+            |// Faking with the phantom one
+            |#radio_2:checked ~ #label_X {
+            |  display: block;
+            |  background: green;
+            |  &:before {
+            |    content: "Marketing";
+            |  }
+            |}
+
+      .fln.flcnw
+        .fla.flcnw.pa2.ba.flc.mb3
+          .fln
+            .fla.flrnw.flspbh.mb3
+              .db.pa2.o-50.flrnw.flrcv
+                .h1.w1.br-100.ba.bw1.bg-white
+                .di.pl2 #radio_1
+              .db.pa2.o-50.flrnw.flrcv
+                .h1.w1.br-100.ba.bw1.bg-white
+                .di.pl2 #radio_2
+              .db.pa2.o-50.flrnw.flrcv
+                .h1.w1.br-100.ba.bw1.bg-white
+                .di.pl2 #radio_X
+            .fla.flrnw.flspbh
+              .db.ba.pa2.flrnw.flc Engineering
+              .db.ba.pa2.flrnw.flc Marketing
+              .db.ba.pa2.flrnw.flc.o-50.w4.shadow-3
+
+        .fla.flcnw.pa2.ba.flc.mb3.fragment
+          .fln
+            .fla.flrnw.flspbh.mb3
+              .db.pa2.o-50.flrnw.flrcv
+                .h1.w1.br-100.ba.bw1.bg-white
+                .di.pl2 #radio_1
+              .db.pa2.o-80.flrnw.flrcv
+                .h1.w1.br-100.ba.bw1.bg-black
+                .di.pl2 #radio_2
+              .db.pa2.o-50.flrnw.flrcv
+                .h1.w1.br-100.ba.bw1.bg-white
+                .di.pl2 #radio_X
+            .fla.flrnw.flspbh
+              .db.ba.pa2.flrnw.flc Engineering
+              .db.ba.pa2.flrnw.flc.o-30 Marketing
+              .db.ba.pa2.flrnw.flc.shadow-3.bg-green.i Marketing
+
+        .fla.flcnw.pa2.ba.flc.fragment
+          .fln
+            .fla.flrnw.flspbh.mb3
+              .db.pa2.o-50.flrnw.flrcv
+                .h1.w1.br-100.ba.bw1.bg-white
+                .di.pl2 #radio_1
+              .db.pa2.o-50.flrnw.flrcv
+                .h1.w1.br-100.ba.bw1.bg-white
+                .di.pl2 #radio_2
+              .db.pa2.o-80.flrnw.flrcv.bw2
+                .h1.w1.br-100.ba.bw1.bg-black
+                .di.pl2 #radio_X
+            .fla.flrnw.flspbh
+              .db.ba.pa2.flrnw.flc Engineering
+              .db.ba.pa2.flrnw.flc Marketing
+              .db.ba.pa2.flrnw.flc.shadow-3.w4.o-30
