@@ -17,6 +17,9 @@ let config = {
     babel: {
       presets: ['env']
     }
+  },
+  server: {
+    port: 3334
   }
 }
 
